@@ -4,4 +4,4 @@ The time zone is controlled by the timer_differential variable at the top of the
 
 Right now, there is no easy in-browser way to modify the time zones, but if you want to modify the script to have one, just fork me and send a pull request.
 
-You can easily install it by visiting the project's homepage on userscripts.org with Greasmonkey installed, or by simply downloading the source and placing mlbtv_time_zones.user.js into your browser's appropriate place.
+You can easily install it by visiting the project's homepage on userscripts.org with Greasmonkey installed, or by simply [downloading the file on Github](https://github.com/int3h/MLB.tv-Time-Zones/raw/master/mlbtv_time_zones.user.js "Download").
