@@ -11,7 +11,7 @@ var time_header = 'Time PST';
 var mgTimes = document.evaluate("//*[@class='mmg_time']", document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
 
 for (var i = mgTimes.snapshotLength - 1; i >= 0; i--) {
- var elem = mgTimes.snapshotItem(i);
+	var elem = mgTimes.snapshotItem(i);
 	
 	var time_parts = new Array();
 	
@@ -30,21 +30,17 @@ for (var i = mgTimes.snapshotLength - 1; i >= 0; i--) {
 	m_ampm = time_parts[1].split(' ');
 	minutes = m_ampm[0];
 	ampm = m_ampm[1];
+
+	hour +=  time_differential;
 	
-	hour = hour + time_differential;
+	// If we've wrapped around in time (from, e.g., 1pm to 11 am) rebase the time
+	if(hour < 1)
+		hour += 12;
 	
-	if(hour < 1) {
-		hour = hour + 12;
-		
-		 // Switch am/pm when we cross the 12 hour barrier
-		if(hour != 12) {	// Don't change am/pm for noon times
-			if(ampm == 'AM') {
-				ampm = 'PM';
-			} else {
-				ampm = 'AM';
-			}
-		}
-	}
+	// If we *did* wrap around time, change the ampm (but not if the new time is 
+	// twelve, but definitely if the old time was twelve)
+	if(hour < 12 && hour >= 12 + time_differential)
+		ampm = ampm == 'AM' ? 'PM' : 'AM';
 	
 	elem.innerHTML = hour.toString() + ':' + minutes + ' ' + ampm;
 }
