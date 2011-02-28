@@ -6,14 +6,12 @@
 // ==/UserScript==
 
 var time_differential = -3;
-var time_header = 'Time PST';
+var time_header = 'Time PT';
 
 var mgTimes = document.evaluate("//*[@class='mmg_time']", document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
 
 for (var i = mgTimes.snapshotLength - 1; i >= 0; i--) {
 	var elem = mgTimes.snapshotItem(i);
-	
-	var time_parts = new Array();
 	
 	// Check to make sure if this is a time cell
 	if(elem.innerHTML.indexOf(':') == -1) {
@@ -25,8 +23,11 @@ for (var i = mgTimes.snapshotLength - 1; i >= 0; i--) {
 	}
 	
 	// Break up the time cell into its component parts
+	var time_parts = new Array();
 	time_parts =  elem.innerHTML.split(':');
+	
 	hour = time_parts[0] * 1;
+	
 	m_ampm = time_parts[1].split(' ');
 	minutes = m_ampm[0];
 	ampm = m_ampm[1];
