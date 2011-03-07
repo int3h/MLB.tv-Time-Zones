@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           MLB.tv Time Zones
-// @namespace      mtvz
+// @namespace      https://github.com/int3h
 // @description    Modifies the times listed on the MLB.tv media center to have times in Pacific Time, instead of Eastern Time
 // @include        http://mlb.mlb.com/mediacenter/*
 // ==/UserScript==
